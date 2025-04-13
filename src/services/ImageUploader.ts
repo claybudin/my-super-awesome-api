@@ -14,7 +14,7 @@ export const ImageUploader = {
 
     try {
       const res = await axios.post<IImghippoResponseObject>(
-        `https://www.imghippo.com/v1/upload?api_key=${imgUploadApiKeyKeyEnvVar}`,
+        `https://api.imghippo.com/v1/upload?api_key=${imgUploadApiKeyKeyEnvVar}`,
         form,
       );
       return res.data.data.view_url;
