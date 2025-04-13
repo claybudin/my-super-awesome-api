@@ -9,6 +9,8 @@ export interface IImghippoResponseObject {
 
 export const ImageUploader = {
   upload: async (imagePath: string): Promise<string> => {
+    return "https://www.imghippo.com/i/cLJM4019xxY.png";
+    
     const form = new formData();
     form.append('file', fs.createReadStream(imagePath));
 
