@@ -21,7 +21,7 @@ export const ImageUploader = {
       return res.data.data.view_url;
     } catch (error) {
       const e = error as AxiosError;
-      console.error(e.response?.data);
+      console.error("Catch Upload Error, e.response?.data:", e.response?.data);
       throw new Error('Error uploading image');
     }
   },
