@@ -13,6 +13,7 @@ export const ImageUploader = {
     form.append('file', fs.createReadStream(imagePath));
 
     try {
+      console.log("UPLOAD IMAGE TO IMG_HIPPO");
       const res = await axios.post<IImghippoResponseObject>(
         `https://api.imghippo.com/v1/upload?api_key=${imgUploadApiKeyKeyEnvVar}`,
         form,
