@@ -9,14 +9,17 @@ export interface IImghippoResponseObject {
 
 export const ImageUploader = {
   upload: async (imagePath: string): Promise<string> => {
-    console.log("imagePath:", imagePath);
-    return "https://i.imghippo.com/files/cLJM4019xxY.png";
+    //console.log("imagePath:", imagePath);
+    //return "https://i.imghippo.com/files/cLJM4019xxY.png";
     
     const form = new formData();
     form.append('file', fs.createReadStream(imagePath));
 
     try {
       console.log("UPLOAD IMAGE TO IMG_HIPPO");
+      console.log("URL:", `https://api.imghippo.com/v1/upload?api_key=${imgUploadApiKeyKeyEnvVar}`);
+      console.log("Form:", form);
+      
       const res = await axios.post<IImghippoResponseObject>(
         `https://api.imghippo.com/v1/upload?api_key=${imgUploadApiKeyKeyEnvVar}`,
         form,
@@ -25,6 +28,9 @@ export const ImageUploader = {
     } catch (error) {
       const e = error as AxiosError;
       console.error("Catch Upload Error, e.response?.data:", e.response?.data);
+      console.log("error:", error);
+      console.log("e:", e);
+      
       throw new Error('Error uploading image');
     }
   },
